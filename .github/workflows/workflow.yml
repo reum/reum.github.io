@@ -2,7 +2,7 @@ name: Create File in Repo
 
 on:
  push:
-    branches: master
+    branches: [ master ]
 #  schedule:
     # Once a day at 8 AM
 #    - cron: 0 8 * * *
