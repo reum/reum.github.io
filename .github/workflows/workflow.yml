@@ -1,0 +1,24 @@
+name: Create File in Repo
+
+on:
+  schedule:
+    # Once a day at 8 AM
+    - cron: 0 8 * * *
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create a new file
+        run: |
+          echo "This is the content of the new file." > new-file.txt
+          echo "Another line of content." >> new-file.txt
+
+      - name: Commit and push the new file
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add new-file.txt via workflow"
+          file_pattern: new-file.txt
